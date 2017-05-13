@@ -46,11 +46,21 @@ class ApiController extends FOSRestController
      */
     public function getBookAction($id)
     {
-        dump(__line__);
-
         $book = $this->getDoctrine()->getRepository('AppBundle:Book')
                     ->find($id);
         $view = $this->view($book, 200);
+        return $view;
+    }
+
+    /**
+     * @REST\Get("/book")
+     *
+     */
+    public function getBooksAction()
+    {
+        $books = $this->getDoctrine()->getRepository('AppBundle:Book')
+                    ->findAll();
+        $view = $this->view($books, 200);
         return $view;
     }
 

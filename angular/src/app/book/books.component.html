@@ -1,0 +1,9 @@
+<h1>Books</h1>
+
+<ul *ngFor="let book of books">
+  <li>
+    <a [routerLink]="['/book', book.id]">{{ book.title }}</a>
+    <button type="button" class="btn btn-warning" [routerLink]="['/modify-book', book.id]">Modify</button>
+    <button type="button" class="btn btn-danger" (click)="deleteBook(book.id)">Suppr</button>
+  </li>
+</ul>
